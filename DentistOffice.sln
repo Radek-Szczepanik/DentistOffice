@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32127.271
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistOffice", "DentistOffice\DentistOffice.csproj", "{66734F6E-2C73-4D92-9936-0C5BD73FEB29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DentistOffice", "DentistOffice\DentistOffice.csproj", "{66734F6E-2C73-4D92-9936-0C5BD73FEB29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DentistOffice.DataAccess", "DentistOffice.DataAccess\DentistOffice.DataAccess.csproj", "{8C62C913-26B4-48EE-A807-E4A274CA98F6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{66734F6E-2C73-4D92-9936-0C5BD73FEB29}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{66734F6E-2C73-4D92-9936-0C5BD73FEB29}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{66734F6E-2C73-4D92-9936-0C5BD73FEB29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C62C913-26B4-48EE-A807-E4A274CA98F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C62C913-26B4-48EE-A807-E4A274CA98F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C62C913-26B4-48EE-A807-E4A274CA98F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C62C913-26B4-48EE-A807-E4A274CA98F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
