@@ -5,6 +5,6 @@ namespace DentistOffice.DataAccess.Entities
     public abstract class EntityBase
     {
         [Key]
-        public int MyProperty { get; set; }
+        public int Id { get; set; }
     }
 }

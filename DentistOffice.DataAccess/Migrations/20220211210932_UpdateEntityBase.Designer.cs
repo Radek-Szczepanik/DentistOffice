@@ -3,14 +3,16 @@ using System;
 using DentistOffice.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DentistOffice.DataAccess.Migrations
 {
     [DbContext(typeof(DentistOfficeContext))]
-    partial class DentistOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20220211210932_UpdateEntityBase")]
+    partial class UpdateEntityBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
