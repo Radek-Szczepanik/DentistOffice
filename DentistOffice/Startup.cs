@@ -23,7 +23,7 @@ namespace DentistOffice
         {
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddDbContext<DentistOfficeContext>(options =>
-                            options.UseSqlite(Configuration.GetConnectionString("DentistOfficeDbConnection")));
+                            options.UseSqlServer(Configuration.GetConnectionString("DentistOfficeDbConnection")));
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

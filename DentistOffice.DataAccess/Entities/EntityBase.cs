@@ -2,7 +2,7 @@
 
 namespace DentistOffice.DataAccess.Entities
 {
-    public abstract class EntityBase
+    public class EntityBase
     {
         [Key]
         public int Id { get; set; }
