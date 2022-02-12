@@ -1,4 +1,6 @@
+using DentistOffice.ApplicationServices.API.Domain.Responses;
 using DentistOffice.DataAccess;
+using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -21,6 +23,7 @@ namespace DentistOffice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMediatR(typeof(ResponseBase<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddDbContext<DentistOfficeContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("DentistOfficeDbConnection")));
