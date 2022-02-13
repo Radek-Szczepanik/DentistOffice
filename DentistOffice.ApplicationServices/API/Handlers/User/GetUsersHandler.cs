@@ -21,16 +21,16 @@ namespace DentistOffice.ApplicationServices.API.Handlers.User
             this.userRepository = userRepository;
             this.mapper = mapper;
         }
-        public Task<GetUsersResponse> Handle(GetUsersRequest request, CancellationToken cancellationToken)
+        public async Task<GetUsersResponse> Handle(GetUsersRequest request, CancellationToken cancellationToken)
         {
-            var users = this.userRepository.GetAll();
+            var users = await this.userRepository.GetAll();
             var mappedUsers = mapper.Map<List<UserDto>>(users);
             var response = new GetUsersResponse()
             {
                 Data = mappedUsers.ToList()
             };
 
-            return Task.FromResult(response);
+            return response;
         }
     }
 }
