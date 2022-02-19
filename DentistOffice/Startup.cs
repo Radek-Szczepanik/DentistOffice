@@ -25,6 +25,7 @@ namespace DentistOffice
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddTransient<IQueryExecutor, QueryExecutor>();
+            services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddAutoMapper(typeof(UsersProfile).Assembly);
             services.AddMediatR(typeof(ResponseBase<>));
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));

@@ -23,6 +23,26 @@ namespace DentistOffice.Controllers
             return Ok(response);
         }
 
+        [HttpGet]
+        [Route("{userId}")]
+        public async Task<IActionResult> GetUserById([FromRoute] int userId)
+        {
+            var request = new GetUserByIdRequest()
+            {
+                UserId = userId
+            };
+
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
+
+        //[HttpPost]
+        //public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+        //{
+        //    var response = await this.mediator.Send(request);
+        //    return this.Ok(response);
+        //}
+
 
         
     }

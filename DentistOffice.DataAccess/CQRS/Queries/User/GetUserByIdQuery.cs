@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace DentistOffice.DataAccess.CQRS.Queries.User
 {
-    public class GetUserQuery : QueryBase<Entities.User>
+    public class GetUserByIdQuery : QueryBase<Entities.User>
     {
         public int Id { get; set; }
 
