@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DentistOffice.DataAccess.Entities
@@ -18,7 +19,6 @@ namespace DentistOffice.DataAccess.Entities
         public virtual UserAddress UserAddress { get; set; }
         public int UserContactId { get; set; }
         public virtual UserContact UserContact { get; set; }
-        public int UserCardId { get; set; }
-        public virtual UserCard UserCard { get; set; }
+        public virtual List<UserCard> UserCards { get; set; }
     }
 }

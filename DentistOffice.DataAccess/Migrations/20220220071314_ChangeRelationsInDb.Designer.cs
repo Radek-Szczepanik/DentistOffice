@@ -4,14 +4,16 @@ using DentistOffice.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DentistOffice.DataAccess.Migrations
 {
     [DbContext(typeof(DentistOfficeContext))]
-    partial class DentistOfficeContextModelSnapshot : ModelSnapshot
+    [Migration("20220220071314_ChangeRelationsInDb")]
+    partial class ChangeRelationsInDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

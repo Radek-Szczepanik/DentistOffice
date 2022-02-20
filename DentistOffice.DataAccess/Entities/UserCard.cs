@@ -23,6 +23,7 @@ namespace DentistOffice.DataAccess.Entities
         [Required]
         public decimal BodyTemperature  { get; set; }
 
+        public int UserId { get; set; }
         public virtual User User { get; set; }
     }
 }

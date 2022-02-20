@@ -16,24 +16,25 @@ namespace DentistOffice.ApplicationServices.Mappings
                     Street = dto.Street,
                     StreetNumber = dto.StreetNumber,
                     PostCode = dto.PostCode,
-                    City = dto.City }))
+                    City = dto.City
+                }))
                 .ForMember(x => x.UserContact, y => y.MapFrom(dto => new UserContact()
                 {
                     Email = dto.Email,
                     PhoneNumber = dto.PhoneNumber
-                }))
-                .ForMember(x => x.UserCard, y => y.MapFrom(dto => new UserCard()
-                {
-                    IsAllergy = dto.IsAllergy,
-                    IsDiabetes = dto.IsDiabetes,
-                    IsHypertension = dto.IsHypertension,
-                    IsHeartDiseases = dto.IsHeartDiseases,
-                    IsJaundice = dto.IsJaundice,
-                    IsPregnancy = dto.IsPregnancy,
-                    IsCough = dto.IsCough,
-                    IsQuarantine = dto.IsQuarantine,
-                    BodyTemperature = dto.BodyTemperature
                 }));
+                //.ForMember(x => x.UserCards, y => y.MapFrom(dto => new UserCard()));
+                //{
+                //    IsAllergy = dto.IsAllergy,
+                //    IsDiabetes = dto.IsDiabetes,
+                //    IsHypertension = dto.IsHypertension,
+                //    IsHeartDiseases = dto.IsHeartDiseases,
+                //    IsJaundice = dto.IsJaundice,
+                //    IsPregnancy = dto.IsPregnancy,
+                //    IsCough = dto.IsCough,
+                //    IsQuarantine = dto.IsQuarantine,
+                //    BodyTemperature = dto.BodyTemperature
+                //}));
         }
     }
 }
