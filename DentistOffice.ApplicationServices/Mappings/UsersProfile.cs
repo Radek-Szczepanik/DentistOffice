@@ -10,14 +10,30 @@ namespace DentistOffice.ApplicationServices.Mappings
         public UsersProfile()
         {
             CreateMap<User, UserDto>();
-            //CreateMap<AddUserRequest, User>()
-            //    .ForMember(x => x.UserAddress.Street, y => y.MapFrom(z => z.Street))
-            //    .ForMember(x => x.UserAddress.StreetNumber, y => y.MapFrom(z => z.StreetNumber))
-            //    .ForMember(x => x.UserAddress.PostCode, y => y.MapFrom(z => z.PostCode))
-            //    .ForMember(x => x.UserAddress.City, y => y.MapFrom(z => z.City));
-            //CreateMap<AddUserRequest, UserAddress>();
-            //CreateMap<AddUserRequest, UserContact>();
-            //CreateMap<AddUserRequest, UserCard>();
+            CreateMap<AddUserRequest, User>()
+                .ForMember(x => x.UserAddress, y => y.MapFrom(dto => new UserAddress()
+                {
+                    Street = dto.Street,
+                    StreetNumber = dto.StreetNumber,
+                    PostCode = dto.PostCode,
+                    City = dto.City }))
+                .ForMember(x => x.UserContact, y => y.MapFrom(dto => new UserContact()
+                {
+                    Email = dto.Email,
+                    PhoneNumber = dto.PhoneNumber
+                }))
+                .ForMember(x => x.UserCard, y => y.MapFrom(dto => new UserCard()
+                {
+                    IsAllergy = dto.IsAllergy,
+                    IsDiabetes = dto.IsDiabetes,
+                    IsHypertension = dto.IsHypertension,
+                    IsHeartDiseases = dto.IsHeartDiseases,
+                    IsJaundice = dto.IsJaundice,
+                    IsPregnancy = dto.IsPregnancy,
+                    IsCough = dto.IsCough,
+                    IsQuarantine = dto.IsQuarantine,
+                    BodyTemperature = dto.BodyTemperature
+                }));
         }
     }
 }

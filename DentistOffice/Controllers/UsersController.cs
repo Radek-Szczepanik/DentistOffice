@@ -36,14 +36,14 @@ namespace DentistOffice.Controllers
             return this.Ok(response);
         }
 
-        //[HttpPost]
-        //public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
-        //{
-        //    var response = await this.mediator.Send(request);
-        //    return this.Ok(response);
-        //}
+        [HttpPost]
+        public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+        {
+            var response = await this.mediator.Send(request);
+            return this.Ok(response);
+        }
 
 
-        
+
     }
 }

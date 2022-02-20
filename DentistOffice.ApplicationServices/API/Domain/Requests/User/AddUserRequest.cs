@@ -1,9 +1,6 @@
 ﻿using DentistOffice.ApplicationServices.API.Domain.Responses.User;
-using DentistOffice.DataAccess.Entities;
 using MediatR;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace DentistOffice.ApplicationServices.API.Domain.Requests.User
 {
@@ -12,10 +9,6 @@ namespace DentistOffice.ApplicationServices.API.Domain.Requests.User
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }
-        //public List<UserAddress> UserAddress { get; set; }
-        //public List<UserContact> UserContact { get; set; }
-        //public List<UserCard> UserCard { get; set; }
-
         public string Street { get; set; }
         public string StreetNumber { get; set; }
         public string PostCode { get; set; }
