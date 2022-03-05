@@ -10,6 +10,7 @@ namespace DentistOffice.ApplicationServices.Mappings
         public UsersProfile()
         {
             CreateMap<User, UserDto>();
+
             CreateMap<AddUserRequest, User>()
                 .ForMember(x => x.UserAddress, y => y.MapFrom(dto => new UserAddress()
                 {
@@ -22,19 +23,49 @@ namespace DentistOffice.ApplicationServices.Mappings
                 {
                     Email = dto.Email,
                     PhoneNumber = dto.PhoneNumber
+                }))
+                .ForMember(x => x.UserCard, y => y.MapFrom(dto => new UserCard()
+                {
+                    IsAllergy = dto.IsAllergy,
+                    IsDiabetes = dto.IsDiabetes,
+                    IsHypertension = dto.IsHypertension,
+                    IsHeartDiseases = dto.IsHeartDiseases,
+                    IsJaundice = dto.IsJaundice,
+                    IsPregnancy = dto.IsPregnancy,
+                    IsCough = dto.IsCough,
+                    IsQuarantine = dto.IsQuarantine,
+                    BodyTemperature = dto.BodyTemperature
                 }));
-                //.ForMember(x => x.UserCards, y => y.MapFrom(dto => new UserCard()));
-                //{
-                //    IsAllergy = dto.IsAllergy,
-                //    IsDiabetes = dto.IsDiabetes,
-                //    IsHypertension = dto.IsHypertension,
-                //    IsHeartDiseases = dto.IsHeartDiseases,
-                //    IsJaundice = dto.IsJaundice,
-                //    IsPregnancy = dto.IsPregnancy,
-                //    IsCough = dto.IsCough,
-                //    IsQuarantine = dto.IsQuarantine,
-                //    BodyTemperature = dto.BodyTemperature
-                //}));
+
+            CreateMap<UpdateUserRequest, User>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.userId))
+                .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))
+                .ForMember(x => x.LastName, y => y.MapFrom(z => z.LastName))
+                .ForMember(x => x.DateOfBirth, y => y.MapFrom(z => z.DateOfBirth));
+            CreateMap<UpdateUserRequest, UserAddress>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.userId))
+                .ForMember(x => x.Street, y => y.MapFrom(z => z.Street))
+                .ForMember(x => x.StreetNumber, y => y.MapFrom(z => z.StreetNumber))
+                .ForMember(x => x.PostCode, y => y.MapFrom(z => z.PostCode))
+                .ForMember(x => x.City, y => y.MapFrom(z => z.City));
+            CreateMap<UpdateUserRequest, UserContact>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.userId))
+                .ForMember(x => x.Email, y => y.MapFrom(z => z.Email))
+                .ForMember(x => x.PhoneNumber, y => y.MapFrom(z => z.PhoneNumber));
+            CreateMap<UpdateUserRequest, UserCard>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.userId))
+                .ForMember(x => x.IsAllergy, y => y.MapFrom(z => z.IsAllergy))
+                .ForMember(x => x.IsDiabetes, y => y.MapFrom(z => z.IsDiabetes))
+                .ForMember(x => x.IsHypertension, y => y.MapFrom(z => z.IsHypertension))
+                .ForMember(x => x.IsHeartDiseases, y => y.MapFrom(z => z.IsHeartDiseases))
+                .ForMember(x => x.IsJaundice, y => y.MapFrom(z => z.IsJaundice))
+                .ForMember(x => x.IsPregnancy, y => y.MapFrom(z => z.IsPregnancy))
+                .ForMember(x => x.IsCough, y => y.MapFrom(z => z.IsCough))
+                .ForMember(x => x.IsQuarantine, y => y.MapFrom(z => z.IsQuarantine))
+                .ForMember(x => x.BodyTemperature, y => y.MapFrom(z => z.BodyTemperature));
+
+            CreateMap<DeleteUserRequest, User>()
+                .ForMember(x => x.Id, y => y.MapFrom(z => z.UserId));
         }
     }
 }

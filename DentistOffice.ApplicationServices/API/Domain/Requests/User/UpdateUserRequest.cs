@@ -4,8 +4,9 @@ using System;
 
 namespace DentistOffice.ApplicationServices.API.Domain.Requests.User
 {
-    public class AddUserRequest : IRequest<AddUserResponse>
+    public class UpdateUserRequest : IRequest<UpdateUserResponse>
     {
+        public int userId;
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTime DateOfBirth { get; set; }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DentistOffice.DataAccess.Entities
@@ -15,10 +14,8 @@ namespace DentistOffice.DataAccess.Entities
         [Required]
         public DateTime DateOfBirth { get; set; }
 
-        public int UserAddressId { get; set; }
-        public virtual UserAddress UserAddress { get; set; }
-        public int UserContactId { get; set; }
-        public virtual UserContact UserContact { get; set; }
-        public virtual List<UserCard> UserCards { get; set; }
+        public UserAddress UserAddress { get; set; }
+        public UserContact UserContact { get; set; }
+        public UserCard UserCard { get; set; }
     }
 }
