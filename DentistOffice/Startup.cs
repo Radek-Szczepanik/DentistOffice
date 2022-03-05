@@ -1,6 +1,8 @@
 using DentistOffice.ApplicationServices.API.Domain.Responses;
+using DentistOffice.ApplicationServices.API.Validators;
 using DentistOffice.ApplicationServices.Mappings;
 using DentistOffice.DataAccess;
+using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -24,6 +26,8 @@ namespace DentistOffice
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvcCore()
+                .AddFluentValidation(v => v.RegisterValidatorsFromAssemblyContaining<AddUserRequestValidator>());
             services.AddTransient<IQueryExecutor, QueryExecutor>();
             services.AddTransient<ICommandExecutor, CommandExecutor>();
             services.AddAutoMapper(typeof(UsersProfile).Assembly);
