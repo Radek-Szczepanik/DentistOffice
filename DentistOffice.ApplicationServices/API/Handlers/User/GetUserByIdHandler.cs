@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
 using DentistOffice.ApplicationServices.API.Domain.Models;
 using DentistOffice.ApplicationServices.API.Domain.Requests.User;
+using DentistOffice.ApplicationServices.API.Domain.Responses;
 using DentistOffice.ApplicationServices.API.Domain.Responses.User;
+using DentistOffice.ApplicationServices.API.ErrorHandling;
 using DentistOffice.DataAccess;
 using DentistOffice.DataAccess.CQRS.Queries.User;
 using MediatR;
@@ -29,6 +31,14 @@ namespace DentistOffice.ApplicationServices.API.Handlers.User
             };
 
             var user = await this.queryExecutor.Execute(query);
+            if (user == null)
+            {
+                return new GetUserByIdResponse()
+                {
+                    Error = new ErrorModel(ErrorType.NotFound)
+                };
+            }
+
             var mappedUser = this.mapper.Map<UserDto>(user);
             return new GetUserByIdResponse()
             {

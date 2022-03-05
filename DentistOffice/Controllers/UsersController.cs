@@ -15,23 +15,21 @@ namespace DentistOffice.Controllers
         }
         
         [HttpGet]
-        public async Task<IActionResult> GetAllUsers([FromQuery] GetUsersRequest request)
+        public Task<IActionResult> GetAllUsers([FromQuery] GetUsersRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return Ok(response);
+            return this.HandleRequest<GetUsersRequest, GetUsersResponse>(request);
         }
 
         [HttpGet]
         [Route("{userId}")]
-        public async Task<IActionResult> GetUserById([FromRoute] int userId)
+        public Task<IActionResult> GetUserById([FromRoute] int userId)
         {
             var request = new GetUserByIdRequest()
             {
                 UserId = userId
             };
 
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<GetUserByIdRequest, GetUserByIdResponse>(request);
         }
 
         [HttpPost]
