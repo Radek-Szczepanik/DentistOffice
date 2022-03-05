@@ -6,6 +6,7 @@ using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,14 +29,24 @@ namespace DentistOffice
         {
             services.AddMvcCore()
                 .AddFluentValidation(v => v.RegisterValidatorsFromAssemblyContaining<AddUserRequestValidator>());
+
+            services.Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true);
+
             services.AddTransient<IQueryExecutor, QueryExecutor>();
+
             services.AddTransient<ICommandExecutor, CommandExecutor>();
+
             services.AddAutoMapper(typeof(UsersProfile).Assembly);
+
             services.AddMediatR(typeof(ResponseBase<>));
+
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+
             services.AddDbContext<DentistOfficeContext>(options =>
                             options.UseSqlServer(Configuration.GetConnectionString("DentistOfficeDbConnection")));
+
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DentistOffice", Version = "v1" });

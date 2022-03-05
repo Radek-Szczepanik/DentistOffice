@@ -1,4 +1,5 @@
 ﻿using DentistOffice.ApplicationServices.API.Domain.Requests.User;
+using DentistOffice.ApplicationServices.API.Domain.Responses.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -7,15 +8,12 @@ namespace DentistOffice.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class UsersController : ControllerBase
+    public class UsersController : ApiControllerBase
     {
-        private readonly IMediator mediator;
-
-        public UsersController(IMediator mediator)
+        public UsersController(IMediator mediator) : base(mediator)
         {
-            this.mediator = mediator;
         }
-
+        
         [HttpGet]
         public async Task<IActionResult> GetAllUsers([FromQuery] GetUsersRequest request)
         {
@@ -37,10 +35,9 @@ namespace DentistOffice.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddUser([FromBody] AddUserRequest request)
+        public Task<IActionResult> AddUser([FromBody] AddUserRequest request)
         {
-            var response = await this.mediator.Send(request);
-            return this.Ok(response);
+            return this.HandleRequest<AddUserRequest, AddUserResponse>(request);
         }
 
         [HttpPut]
