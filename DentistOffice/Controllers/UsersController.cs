@@ -2,6 +2,7 @@
 using DentistOffice.ApplicationServices.API.Domain.Responses.User;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
 namespace DentistOffice.Controllers
@@ -10,8 +11,9 @@ namespace DentistOffice.Controllers
     [Route("[controller]")]
     public class UsersController : ApiControllerBase
     {
-        public UsersController(IMediator mediator) : base(mediator)
+        public UsersController(IMediator mediator, ILogger<UsersController> logger) : base(mediator)
         {
+            logger.LogInformation("We are in users controller");
         }
         
         [HttpGet]
