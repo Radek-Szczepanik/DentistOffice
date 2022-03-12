@@ -9,8 +9,14 @@ namespace DentistOffice.DataAccess.CQRS.Queries.User
 
         public override async Task<Entities.User> Execute(DentistOfficeContext context)
         {
-            var user = await context.Users.FirstOrDefaultAsync(x => x.Id == this.Id);
+            var user = await context.Users
+                .Include(x => x.UserAddress)
+                .Include(x => x.UserContact)
+                .Include(x => x.UserCard)
+                .FirstOrDefaultAsync(x => x.Id == this.Id);
+                
             return user;
+            
         }
     }
 }

@@ -9,7 +9,26 @@ namespace DentistOffice.ApplicationServices.Mappings
     {
         public UsersProfile()
         {
-            CreateMap<User, UserDto>();
+            CreateMap<User, UserDto>()
+                .ForMember(x => x.FirstName, y => y.MapFrom(z => z.FirstName))
+                .ForMember(x => x.LastName, y => y.MapFrom(z => z.LastName))
+                .ForMember(x => x.DateOfBirth, y => y.MapFrom(z => z.DateOfBirth))
+                .ForMember(x => x.Street, y => y.MapFrom(z => z.UserAddress.Street))
+                .ForMember(x => x.StreetNumber, y => y.MapFrom(z => z.UserAddress.StreetNumber))
+                .ForMember(x => x.PostCode, y => y.MapFrom(z => z.UserAddress.PostCode))
+                .ForMember(x => x.City, y => y.MapFrom(z => z.UserAddress.City))
+                .ForMember(x => x.Email, y => y.MapFrom(z => z.UserContact.Email))
+                .ForMember(x => x.PhoneNumber, y => y.MapFrom(z => z.UserContact.PhoneNumber))
+                .ForMember(x => x.IsAllergy, y => y.MapFrom(z => z.UserCard.IsAllergy))
+                .ForMember(x => x.IsDiabetes, y => y.MapFrom(z => z.UserCard.IsDiabetes))
+                .ForMember(x => x.IsHypertension, y => y.MapFrom(z => z.UserCard.IsHypertension))
+                .ForMember(x => x.IsHeartDiseases, y => y.MapFrom(z => z.UserCard.IsHeartDiseases))
+                .ForMember(x => x.IsJaundice, y => y.MapFrom(z => z.UserCard.IsJaundice))
+                .ForMember(x => x.IsPregnancy, y => y.MapFrom(z => z.UserCard.IsPregnancy))
+                .ForMember(x => x.IsCough, y => y.MapFrom(z => z.UserCard.IsCough))
+                .ForMember(x => x.IsQuarantine, y => y.MapFrom(z => z.UserCard.IsQuarantine))
+                .ForMember(x => x.BodyTemperature, y => y.MapFrom(z => z.UserCard.BodyTemperature));
+            
 
             CreateMap<AddUserRequest, User>()
                 .ForMember(x => x.UserAddress, y => y.MapFrom(dto => new UserAddress()

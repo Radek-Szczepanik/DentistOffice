@@ -2,7 +2,6 @@
 using DentistOffice.ApplicationServices.API.ErrorHandling;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;

@@ -40,24 +40,23 @@ namespace DentistOffice.Controllers
 
         [HttpPut]
         [Route("{userId}")]
-        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request, int userId)
+        public Task<IActionResult> UpdateUser([FromBody] UpdateUserRequest request, int userId)
         {
             request.userId = userId;
-            var response = await this.mediator.Send(request);
-            return this.Ok();
+            
+            return this.HandleRequest<UpdateUserRequest, UpdateUserResponse>(request);
         }
 
         [HttpDelete]
         [Route("{userId}")]
-        public async Task<IActionResult> DeleteUser([FromRoute] int userId)
+        public Task<IActionResult> DeleteUser([FromRoute] int userId)
         {
             var request = new DeleteUserRequest()
             {
                 UserId = userId
             };
 
-            var response = await this.mediator.Send(request);
-            return this.NoContent();
+            return this.HandleRequest<DeleteUserRequest, DeleteUserResponse>(request);
         }
     }
 }

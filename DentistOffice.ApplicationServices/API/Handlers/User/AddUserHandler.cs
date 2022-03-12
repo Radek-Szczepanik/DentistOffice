@@ -22,7 +22,11 @@ namespace DentistOffice.ApplicationServices.API.Handlers.User
         public async Task<AddUserResponse> Handle(AddUserRequest request, CancellationToken cancellationToken)
         {
             var user = this.mapper.Map<DataAccess.Entities.User>(request);
-            var command = new AddUserCommand() { Parameter = user };
+            var command = new AddUserCommand()
+            {
+                Parameter = user
+            };
+
             var userFromDb = await this.commandExecutor.Execute(command);
             return new AddUserResponse()
             {

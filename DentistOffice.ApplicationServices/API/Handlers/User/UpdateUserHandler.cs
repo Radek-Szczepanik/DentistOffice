@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using DentistOffice.ApplicationServices.API.Domain.Models;
 using DentistOffice.ApplicationServices.API.Domain.Requests.User;
+using DentistOffice.ApplicationServices.API.Domain.Responses;
 using DentistOffice.ApplicationServices.API.Domain.Responses.User;
+using DentistOffice.ApplicationServices.API.ErrorHandling;
 using DentistOffice.DataAccess;
 using DentistOffice.DataAccess.CQRS.Commands.User;
 using DentistOffice.DataAccess.CQRS.Queries.User;
 using MediatR;
-using System;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -31,36 +32,30 @@ namespace DentistOffice.ApplicationServices.API.Handlers.User
             //{
             //    Id = request.userId
             //};
-            //var user = await this.queryExecutor.Execute(query);
 
-            //if (user == null)
-            //{
-            //    return null;
-            //};
-            //var command = new UpdateUserCommand()
-            //{
-            //    Parameter = user
-            //};
-            //var userFromDb = await this.commandExecutor.Execute(command);
+            //var id = await this.queryExecutor.Execute(query);
 
-            //return new UpdateUserResponse()
+            //if (id == null)
             //{
-            //    Data = this.mapper.Map<UserDto>(userFromDb)
-            //};
+            //    return new UpdateUserResponse()
+            //    {
+            //        Error = new ErrorModel(ErrorType.NotFound)
+            //    };
+            //}
 
-            var user = this.mapper.Map<DataAccess.Entities.User>(request);
+            var mappedUser = this.mapper.Map<DataAccess.Entities.User>(request);
+
             var command = new UpdateUserCommand()
             {
-                Parameter = user
+                Parameter = mappedUser
             };
 
             var updatedUser = await this.commandExecutor.Execute(command);
 
             return new UpdateUserResponse()
             {
-                Data = this.mapper.Map<UserDto>(updatedUser) 
+                Data = this.mapper.Map<UserDto>(updatedUser)
             };
-
         }
     }
 }

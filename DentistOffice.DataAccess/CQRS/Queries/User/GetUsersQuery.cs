@@ -8,7 +8,11 @@ namespace DentistOffice.DataAccess.CQRS.Queries.User
     {
         public override Task<List<Entities.User>> Execute(DentistOfficeContext context)
         {
-            return context.Users.ToListAsync();
+            return context.Users
+                .Include(a => a.UserAddress)
+                .Include(a => a.UserContact)
+                .Include(a => a.UserCard)
+                .ToListAsync();
         }
     }
 }
